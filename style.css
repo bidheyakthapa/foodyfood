@@ -29,6 +29,10 @@ a {
   margin: 22px;
 }
 
+a:hover {
+  color: #ff3838;
+}
+
 .end-nav i {
   padding: 20px;
 }
@@ -133,4 +137,61 @@ a {
 .item-text p {
   font-size: 20px;
   font-weight: 100px;
+}
+
+.combo h1 {
+  align-items: center;
+  text-align: center;
+  color: #ff3838;
+  font-size: 35px;
+}
+
+.meals {
+  display: flex;
+  justify-content: space-around;
+  margin: 60px 40px;
+}
+
+.meal {
+  background-color: #ff3838;
+  width: 350px;
+  box-shadow: 0px 0px 20px rgba(255, 56, 56, 0.755);
+  border-radius: 15px;
+  width: 370px;
+}
+
+.meal img {
+  padding: 20px;
+  padding-left: 55px;
+}
+
+.meal-about {
+  background-color: #ffffff;
+  height: 140px;
+  padding: 20px;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.meal-about p {
+  font-size: 28px;
+  color: #2d3748;
+  font-weight: 600;
+  padding-bottom: 30px;
+  width: 225px;
+}
+
+.meal-about h2 {
+  font-size: 37px;
+  color: #1a202c;
+}
+
+.meal-about button {
+  padding: 5px 15px;
+  color: #ffffff;
+  border: #ff3838 2px solid;
+  background-color: #ff3838;
+  font-weight: 700;
+  font-size: 24px;
+  margin-left: 50px;
+  cursor: pointer;
 }
