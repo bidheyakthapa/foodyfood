@@ -4,6 +4,13 @@
   font-family: "Roboto";
 }
 
+.title {
+  align-items: center;
+  text-align: center;
+  color: #ff3838;
+  font-size: 37px;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -139,13 +146,6 @@ a:hover {
   font-weight: 100px;
 }
 
-.combo h1 {
-  align-items: center;
-  text-align: center;
-  color: #ff3838;
-  font-size: 35px;
-}
-
 .meals {
   display: flex;
   justify-content: space-around;
@@ -195,3 +195,39 @@ a:hover {
   margin-left: 50px;
   cursor: pointer;
 }
+
+.categories {
+  margin: 150px 80px;
+}
+
+.cate-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.cate {
+  border: 3px solid #ff3838;
+  padding-top: 20px;
+  width: 240px;
+  text-align: center;
+  border-radius: 15px;
+  color: #ff3838;
+  margin-top: 50px;
+  box-shadow: 0px 0px 10px rgba(255, 56, 56, 0.755);
+  cursor: pointer;
+  height: 100px;
+  transition: all 0.2s ease-in-out;
+}
+
+.cate[aria-hidden="true"] {
+  border-color: #a5a5a5;
+  color: #a5a5a5;
+  filter: grayscale(20%) brightness(1000%) contrast(10%);
+  box-shadow: none;
+  font-size: small;
+  height: 75px;
+  width: 220px;
+}
+
