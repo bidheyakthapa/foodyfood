@@ -1,79 +1,89 @@
-const burger = document.getElementById("burger");
-const pizza = document.getElementById("pizza");
-const fries = document.getElementById("fries");
-const drinks = document.getElementById("drinks");
-
-burger.addEventListener("click", toggleAriaHidden);
-pizza.addEventListener("click", toggleAriaHidden);
-fries.addEventListener("click", toggleAriaHidden);
-drinks.addEventListener("click", toggleAriaHidden);
-
-function toggleAriaHidden() {
-  const element = this; // "this" refers to the clicked element
-
-  // Set all elements to aria-hidden="true"
-  burger.setAttribute("aria-hidden", "true");
-  pizza.setAttribute("aria-hidden", "true");
-  fries.setAttribute("aria-hidden", "true");
-  drinks.setAttribute("aria-hidden", "true");
-
-  // Set the clicked element to aria-hidden="false"
-  element.setAttribute("aria-hidden", "false");
-}
+// Get references to category elements and slide elements
+const categories = document.querySelectorAll(".cate");
+const slides = document.querySelectorAll(".slides");
 const radioButtons = document.querySelectorAll('input[type="radio"]');
-const slides = document.querySelector(".slides");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
-const manualBtns = document.querySelectorAll(".manual-btn"); // Select all manual navigation buttons
+const manualBtns = document.querySelectorAll(".manual-btn");
 
-let currentIndex = 0; // Initialize the current slide index
-const numberOfSlides = 3; // Change this to match the actual number of slides
+let currentIndex = 0;
 
-function moveSlider() {
-  // Calculate the translation based on the current index
-  const translateX = -currentIndex * 100;
+// Function to toggle visibility of categories and slides
+function toggleAriaHidden() {
+  const category = this.getAttribute("data-category");
 
-  // Apply the transformation to move the slider
-  slides.style.transform = `translateX(${translateX}%)`;
+  currentIndex = 0;
 
-  // Disable or enable the arrow buttons based on the current slide index
-  prevBtn.disabled = currentIndex === 0;
-  nextBtn.disabled = currentIndex === numberOfSlides - 1;
-
-  // Update the background color of manual navigation buttons
-  manualBtns.forEach((btn, index) => {
-    if (index === currentIndex) {
-      btn.style.background = "#ff3838";
-      btn.style.opacity = 1;
-    } else {
-      btn.style.background = "";
-      btn.style.opacity = 0.3;
-    }
+  // Set aria-hidden="true" for all categories and slides
+  categories.forEach((cat) => {
+    cat.setAttribute("aria-hidden", "true");
   });
+
+  slides.forEach((slide) => {
+    slide.setAttribute("aria-hidden", "true");
+  });
+
+  // Set aria-hidden="false" for the clicked category
+  this.setAttribute("aria-hidden", "false");
+
+  // Find and set aria-hidden="false" for the associated slide section
+  const associatedSlide = document.querySelector(
+    `[data-category="${category}-list"]`
+  );
+  if (associatedSlide) {
+    associatedSlide.setAttribute("aria-hidden", "false");
+  }
+
+  moveSlider();
 }
 
+// Add click event listeners to category elements
+categories.forEach((category) => {
+  category.addEventListener("click", toggleAriaHidden);
+});
+
+// Initialize the slider for the default category (Burger)
+toggleAriaHidden.call(categories[0]);
+
+// Slider navigation functionality
+
 prevBtn.addEventListener("click", () => {
-  // Check if we are not at the first slide
   if (currentIndex > 0) {
-    currentIndex--; // Move to the previous slide
+    currentIndex--;
     moveSlider();
   }
 });
 
 nextBtn.addEventListener("click", () => {
-  // Check if we are not at the last slide
-  if (currentIndex < numberOfSlides - 1) {
-    currentIndex++; // Move to the next slide
+  if (currentIndex < slides.length) {
+    currentIndex++;
     moveSlider();
   }
 });
 
 radioButtons.forEach((radio, index) => {
   radio.addEventListener("change", () => {
-    currentIndex = index; // Set the current index based on radio button selection
+    currentIndex = index;
     moveSlider();
   });
 });
 
-// Initialize the slider
-moveSlider();
+function moveSlider() {
+  const translateX = -currentIndex * 100;
+  slides.forEach((slide) => {
+    slide.style.transform = `translateX(${translateX}%)`;
+  });
+
+  prevBtn.disabled = currentIndex === 0;
+  nextBtn.disabled = currentIndex === slides.length;
+
+  manualBtns.forEach((manualBtn, index) => {
+    if (index === currentIndex) {
+      manualBtn.style.background = "#ff3838";
+      manualBtn.style.opacity = 1;
+    } else {
+      manualBtn.style.background = "";
+      manualBtn.style.opacity = 0.3;
+    }
+  });
+}

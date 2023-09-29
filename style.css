@@ -183,6 +183,8 @@ a:hover {
 .meal-about h2 {
   font-size: 37px;
   color: #1a202c;
+  display: flex;
+  justify-content: space-between;
 }
 
 .meal-about button {
@@ -192,7 +194,6 @@ a:hover {
   background-color: #ff3838;
   font-weight: 700;
   font-size: 24px;
-  margin-left: 50px;
   cursor: pointer;
 }
 
@@ -300,4 +301,9 @@ a:hover {
   margin-top: -500px;
   z-index: 20;
   rotate: 180deg;
+}
+
+
+.slides[aria-hidden="true"]{
+  display: none;
 }
