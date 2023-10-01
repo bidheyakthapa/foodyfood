@@ -174,7 +174,7 @@ a:hover {
 
 .meal-about p {
   font-size: 28px;
-  color: #2d3748;
+  color: #505762;
   font-weight: 600;
   padding-bottom: 30px;
   width: 225px;
@@ -182,7 +182,7 @@ a:hover {
 
 .meal-about h2 {
   font-size: 37px;
-  color: #1a202c;
+  color: #3f444f;
   display: flex;
   justify-content: space-between;
 }
@@ -201,13 +201,13 @@ a:hover {
   margin: 150px 80px;
 }
 
-.cate-list{
+.cate-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
   height: 100px;
-  margin-top: 30px;
+  margin: 30px 0px;
 }
 
 .cate {
@@ -234,17 +234,15 @@ a:hover {
   width: 220px;
 }
 
-
-.categories .cate-meals{
+.categories .cate-meals {
   margin: 0;
 }
-
 
 .cate-meals {
   overflow: hidden;
 }
 
-.cate-meals .meal{
+.cate-meals .meal {
   margin: 80px 30px 0px 30px;
 }
 
@@ -289,21 +287,32 @@ a:hover {
   display: none;
 }
 
-#prevBtn{
+#prevBtn {
   cursor: pointer;
   margin-top: -500px;
 
   z-index: 20;
 }
 
-#nextBtn{
+#nextBtn {
   cursor: pointer;
   margin-top: -500px;
   z-index: 20;
   rotate: 180deg;
 }
 
-
-.slides[aria-hidden="true"]{
+.slides[aria-hidden="true"] {
   display: none;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  margin: 80px;
+  justify-content: space-around;
+}
+.about-text {
+  width: 500px;
+  font-size: 20px;
+  color: #575757;
 }
