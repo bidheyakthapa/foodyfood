@@ -320,7 +320,38 @@ a:hover {
   margin: 100px;
 }
 
-.testimonial-content {
+.testi-slider {
+  overflow: hidden;
+}
+
+.testi-slides {
+  display: flex;
+  width: 300%;
+}
+
+.testi-slides input {
+  display: none;
+}
+
+#testi-radio1:checked ~ .first {
+  margin-left: 0;
+}
+
+#testi-radio2:checked ~ .first {
+  margin-left: -33%;
+}
+
+#testi-radio3:checked ~ .first {
+  margin-left: -66%;
+}
+
+.testimonials .navigation-manual {
+  width: fit-content;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.testi-slide {
   background: url(images/testimonial-bg.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -331,6 +362,8 @@ a:hover {
   height: 295px;
   margin-top: 80px;
   filter: drop-shadow(0px 0px 10px rgba(255, 56, 56, 0.755));
+  transition: 2s;
+  width: 33%;
 }
 
 .testi-img {
