@@ -1,25 +1,32 @@
 // Get references to category elements and slide elements
 const categories = document.querySelectorAll(".cate");
-const slides = document.querySelectorAll(".slides");
-const radioButtons = document.querySelectorAll('input[type="radio"]');
+const categorySlides = document.querySelectorAll(".slides[data-category]");
+const categoryRadioButtons = document.querySelectorAll(
+  'input[name="category-radio-btn"]'
+);
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
-const manualBtns = document.querySelectorAll(".manual-btn");
+const categoryManualBtns = document.querySelectorAll(".category-manual-btn");
+const testiManualBtns = document.querySelectorAll(".testi-manual-btn");
+const testiRadioButtons = document.querySelectorAll(
+  'input[name="testi-radio-btn"]'
+);
 
-let currentIndex = 0;
+let categoryIndex = 0;
+let testiIndex = 0;
 
 // Function to toggle visibility of categories and slides
 function toggleAriaHidden() {
   const category = this.getAttribute("data-category");
 
-  currentIndex = 0;
+  categoryIndex = 0;
 
   // Set aria-hidden="true" for all categories and slides
   categories.forEach((cat) => {
     cat.setAttribute("aria-hidden", "true");
   });
 
-  slides.forEach((slide) => {
+  categorySlides.forEach((slide) => {
     slide.setAttribute("aria-hidden", "true");
   });
 
@@ -34,7 +41,7 @@ function toggleAriaHidden() {
     associatedSlide.setAttribute("aria-hidden", "false");
   }
 
-  moveSlider();
+  moveCategorySlider();
 }
 
 // Add click event listeners to category elements
@@ -48,42 +55,76 @@ toggleAriaHidden.call(categories[0]);
 // Slider navigation functionality
 
 prevBtn.addEventListener("click", () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    moveSlider();
+  if (categoryIndex > 0) {
+    categoryIndex--;
+    moveCategorySlider();
   }
 });
 
 nextBtn.addEventListener("click", () => {
-  if (currentIndex < slides.length) {
-    currentIndex++;
-    moveSlider();
+  if (categoryIndex < categorySlides.length - 2) {
+    categoryIndex++;
+    moveCategorySlider();
   }
 });
 
-radioButtons.forEach((radio, index) => {
+categoryRadioButtons.forEach((radio, index) => {
   radio.addEventListener("change", () => {
-    currentIndex = index;
-    moveSlider();
+    categoryIndex = index;
+    moveCategorySlider();
   });
 });
 
-function moveSlider() {
-  const translateX = -currentIndex * 100;
-  slides.forEach((slide) => {
+testiRadioButtons.forEach((radio, index) => {
+  radio.addEventListener("change", () => {
+    testiIndex = index;
+    moveTestiSlider();
+  });
+});
+
+function moveCategorySlider() {
+  const translateX = -categoryIndex * 100;
+  categorySlides.forEach((slide) => {
     slide.style.transform = `translateX(${translateX}%)`;
   });
 
-  prevBtn.disabled = currentIndex === 0;
-  nextBtn.disabled = currentIndex === slides.length;
+  prevBtn.disabled = categoryIndex === 1;
+  nextBtn.disabled = categoryIndex === categorySlides.length - 1;
 
-  manualBtns.forEach((manualBtn, index) => {
-    if (index === currentIndex) {
-      manualBtn.style.background = "#ff3838";
-      manualBtn.style.opacity = 1;
+  categoryManualBtns.forEach((categoryManualBtn, index) => {
+    if (index === categoryIndex) {
+      categoryManualBtn.style.background = "#ff3838";
+      categoryManualBtn.style.opacity = 1;
     } else {
-      manualBtn.style.background = "";
-      manualBtn.style.opacity = 0.3;
+      categoryManualBtn.style.background = "";
+      categoryManualBtn.style.opacity = 0.3;
+    }
+  });
+
+}
+
+function moveTestiSlider() {
+  const translateX = -testiIndex * 100;
+  const testiSlides = document.querySelectorAll(".testi-slide");
+  testiSlides.forEach((slide) => {
+    slide.style.transform = `translateX(${translateX}%)`;
+  });
+
+  testiManualBtns.forEach((testiManualBtn, index) => {
+    if (index === testiIndex) {
+      testiManualBtn.style.background = "#ff3838";
+      testiManualBtn.style.opacity = 1;
+    } else {
+      testiManualBtn.style.background = "";
+      testiManualBtn.style.opacity = 0.3;
+    }
+  });
+
+  testiRadioButtons.forEach((radio, index) => {
+    if (index === testiIndex) {
+      radio.checked = true;
+    } else {
+      radio.checked = false;
     }
   });
 }

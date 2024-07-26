@@ -25,7 +25,7 @@
       <img src="images/logo.svg" alt="LOGO" />
       <nav>
         <ul>
-          <li><a href="">Home</a></li>
+          <li><a href="#hero">Home</a></li>
           <li><a href="">Menu</a></li>
           <li><a href="">About Us</a></li>
         </ul>
@@ -35,7 +35,7 @@
         <i class="fa-regular fa-user"></i>
       </div>
     </header>
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="hero-t">
         <div class="hero-t-1">
           <img src="images/fs.svg" alt="img" />
@@ -65,7 +65,9 @@
           </div>
         </div>
       </div>
-      <img src="images/hero.svg" alt="hero image" class="hero-img" />
+      <div>
+        <img src="images/hero.svg" alt="hero image" class="hero-img" />
+      </div>
     </section>
     <section class="hero-2">
       <div class="item fast">
@@ -205,6 +207,7 @@
               </div>
             </div>
           </div>
+          
           <div class="slide">
             <div class="meal">
               <img src="images/combo-1.svg" alt="combo food image" />
@@ -513,15 +516,15 @@
           <!-- Repeat similar code for the next slides -->
         </div>
 
-        <input type="radio" name="radio-btn" id="radio1" checked />
-        <input type="radio" name="radio-btn" id="radio2" />
-        <input type="radio" name="radio-btn" id="radio3" />
+        <input type="radio" name="category-radio-btn" id="radio1" checked />
+        <input type="radio" name="category-radio-btn" id="radio2" />
+        <input type="radio" name="category-radio-btn" id="radio3" />
         <div class="navigation-manual">
           <img src="images/nav-btn.svg" alt="" id="prevBtn" />
           <div class="navigation-manual">
-            <label for="radio1" class="manual-btn"></label>
-            <label for="radio2" class="manual-btn"></label>
-            <label for="radio3" class="manual-btn"></label>
+            <label for="radio1" class="category-manual-btn"></label>
+            <label for="radio2" class="category-manual-btn"></label>
+            <label for="radio3" class="category-manual-btn"></label>
           </div>
           <img src="images/nav-btn.svg" alt="" id="nextBtn" />
         </div>
@@ -549,9 +552,9 @@
       <h1 class="title">Testimonials</h1>
       <div class="testi-slider">
         <div class="testi-slides">
-          <input type="radio" name="radio-btn" id="testi-radio1" checked />
-          <input type="radio" name="radio-btn" id="testi-radio2" />
-          <input type="radio" name="radio-btn" id="testi-radio3" />
+          <input type="radio" name="testi-radio-btn" id="testi-radio1" checked />
+          <input type="radio" name="testi-radio-btn" id="testi-radio2" />
+          <input type="radio" name="testi-radio-btn" id="testi-radio3" />
           <div class="testi-slide first">
             <img
               class="testi-img"
@@ -593,9 +596,9 @@
           </div>
         </div>
         <div class="navigation-manual">
-          <label for="testi-radio1" class="manual-btn"></label>
-          <label for="testi-radio2" class="manual-btn"></label>
-          <label for="testi-radio3" class="manual-btn"></label>
+          <label for="testi-radio1" class="testi-manual-btn"></label>
+          <label for="testi-radio2" class="testi-manual-btn"></label>
+          <label for="testi-radio3" class="testi-manual-btn"></label>
         </div>
       </div>
     </section>
